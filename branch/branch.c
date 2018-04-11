@@ -9,7 +9,7 @@
 #include "hpctimer.h"
 
 enum { 
-    n = 100000,
+    n = 1000000,
     nreps = 20 
 };
 
@@ -54,13 +54,13 @@ int main()
         
     /* First run: warmup */
     tfirst = hpctimer_wtime();
-    blend_map_opt(z, x, y, n, 0);
+    blend_map(z, x, y, n, 0);
     tfirst = hpctimer_wtime() - tfirst;
 
     /* Measures */
     t = hpctimer_wtime();
     for (i = 0; i < nreps; i++) {
-        blend_map_opt(z, x, y, n, 0);
+        blend_map(z, x, y, n, 0);
     }
     t = (hpctimer_wtime() - t) / nreps;
 

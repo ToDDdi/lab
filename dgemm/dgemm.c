@@ -43,7 +43,7 @@ void dgemm_transpose(double *a, double *b, double *c, int n)
 
 void dgemm_block(double *a, double *b, double *c, int n)
 {
-    int BS = 32;
+    int BS = 16;
     int i, k, j;
     int i0, k0, j0;
     double *c0, *b0, *a0;
@@ -101,9 +101,9 @@ int main(int argc, char **argv)
     t = hpctimer_getwtime();
     for (i = 0; i < NREPS; i++) {
         //dgemm_def(A, B, C, N);
-        //dgemm_transpose(A, B, C, N);
+       // dgemm_transpose(A, B, C, N);
         //dgemm_transpose2(A, B, C, N);
-        dgemm_block(A, B, C, N);
+       dgemm_block(A, B, C, N);
     }
     t = hpctimer_getwtime() - t;
     t = t / NREPS;
